@@ -7,7 +7,7 @@ import { DriversTabPage } from './drivers-tab.page';
 import { NgxsModule } from '@ngxs/store';
 import { DriversState } from 'src/store/drivers/drivers.state';
 import { FilterDriversModalComponent } from 'src/app/shared/components/filter-drivers.modal';
-import { SortDriversPipe, OnlineFilterPipe } from './drivers.pipes';
+import { SortDriversPipe, OnlineFilterPipe, TimeSincePipe } from './drivers.pipes';
 
 @NgModule({
     imports: [
@@ -18,6 +18,12 @@ import { SortDriversPipe, OnlineFilterPipe } from './drivers.pipes';
         RouterModule.forChild([{ path: '', component: DriversTabPage }])
     ],
     entryComponents: [FilterDriversModalComponent],
-    declarations: [DriversTabPage, FilterDriversModalComponent, SortDriversPipe, OnlineFilterPipe]
+    declarations: [
+        DriversTabPage,
+        FilterDriversModalComponent,
+        SortDriversPipe,
+        OnlineFilterPipe,
+        TimeSincePipe
+    ]
 })
 export class DriversTabPageModule { }

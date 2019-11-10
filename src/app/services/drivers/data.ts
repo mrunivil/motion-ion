@@ -5,7 +5,7 @@ export default [
         status: 0,
         remainingTime: 12301000,
         online: true,
-        lastUpdate: Date.now() - 1000 * 60 * 4,
+        lastUpdate: Date.now() - (1000 * 60 * 6),
         driver: undefined,
     },
     {
@@ -14,7 +14,7 @@ export default [
         status: 1,
         remainingTime: 12001560,
         online: true,
-        lastUpdate: Date.now() - 1000 * 60 * 4,
+        lastUpdate: Date.now() - (1000 * 60 * 4),
         driver: undefined,
     },
     {
@@ -23,7 +23,7 @@ export default [
         status: 1,
         remainingTime: 12301500,
         online: false,
-        lastUpdate: Date.now() - 1000 * 60 * 60 * 3,
+        lastUpdate: Date.now() - (1000 * 60 * 60 * 3),
         driver: undefined,
     },
     {
