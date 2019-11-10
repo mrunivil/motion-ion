@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { SelectDriver } from 'src/store/drivers/actions';
 import { Driver } from 'src/app/model/driver';
+import { ActionSheetController, ModalController } from '@ionic/angular';
+import { FilterDriversModalComponent } from 'src/app/shared/components/filter-drivers.modal';
 
 @Component({
     selector: 'app-drivers-tab',
@@ -12,10 +14,21 @@ import { Driver } from 'src/app/model/driver';
 })
 export class DriversTabPage {
 
-    constructor(public driversService: DriversService, private store: Store) { }
+    constructor(
+        public driversService: DriversService,
+        private store: Store,
+        private modalController: ModalController
+    ) { }
 
     selectDriver(selected: Driver) {
         this.store.dispatch(new SelectDriver(selected));
+    }
+
+    async toggleFilter() {
+        const modal = await this.modalController.create({
+            component: FilterDriversModalComponent
+        });
+        return await modal.present();
     }
 
 }

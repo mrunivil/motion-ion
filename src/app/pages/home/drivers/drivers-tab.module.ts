@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { DriversTabPage } from './drivers-tab.page';
 import { NgxsModule } from '@ngxs/store';
 import { DriversState } from 'src/store/drivers/drivers.state';
+import { FilterDriversModalComponent } from 'src/app/shared/components/filter-drivers.modal';
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { DriversState } from 'src/store/drivers/drivers.state';
         NgxsModule.forFeature([DriversState]),
         RouterModule.forChild([{ path: '', component: DriversTabPage }])
     ],
-    declarations: [DriversTabPage]
+    entryComponents: [FilterDriversModalComponent],
+    declarations: [DriversTabPage, FilterDriversModalComponent]
 })
 export class DriversTabPageModule { }

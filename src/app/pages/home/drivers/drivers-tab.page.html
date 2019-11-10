@@ -1,8 +1,18 @@
 <ion-header>
     <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button (click)="toggleFilter()">
+                <ion-icon name="funnel"></ion-icon>
+            </ion-button>
+        </ion-buttons>
         <ion-title>
             Drivers
         </ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon name="exit"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
