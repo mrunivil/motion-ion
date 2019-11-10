@@ -1,12 +1,14 @@
-import { NumericValueAccessor } from '@ionic/angular';
-import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
+
 
 export interface Driver {
     name: string;
     speed: number;
+    online: boolean;
     status: DriverStatus;
+    remainingTime: number;
+    lastUpdate: number;
 }
 
 export enum DriverStatus {
-    resting, driving
+    resting = 0, driving = 1
 }
