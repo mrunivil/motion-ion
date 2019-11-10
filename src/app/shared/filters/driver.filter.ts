@@ -19,10 +19,7 @@ export const DRIVER_FILTERS = [
         value: DriverFilterCategory.lastUpdate,
         label: 'last update'
     },
-    {
-        value: DriverFilterCategory.onlineStatus,
-        label: 'online status'
-    },
+
     {
         value: DriverFilterCategory.drivingStatus,
         label: 'driving status'

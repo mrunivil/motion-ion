@@ -9,7 +9,7 @@
 <ion-content fullscreen>
     <ion-list>
         <ion-list-header>
-            <h4>Driving</h4>
+            <h4>Online</h4>
         </ion-list-header>
         <ion-item *ngFor="let vehicle of vehiclesService.getVehicles()|async" class="ion-activatable"
             (click)="selectVehicle(vehicle)">
@@ -19,7 +19,7 @@
                 </ion-img>
             </ion-avatar>
             <ion-label>
-                <ion-note color="danger">offline</ion-note>
+                <ion-note color="success">online</ion-note>
                 <h2>{{vehicle.name}}</h2>
 
                 <div style="display:flex">
@@ -37,7 +37,7 @@
 
     <ion-list>
         <ion-list-header>
-            <h4>Resting</h4>
+            <h4>Offline</h4>
         </ion-list-header>
         <ion-item *ngFor="let vehicle of vehiclesService.getVehicles()|async" class="ion-activatable"
             (click)="selectVehicle(vehicle)">
@@ -47,7 +47,7 @@
                 </ion-img>
             </ion-avatar>
             <ion-label>
-                <ion-note color="success">online</ion-note>
+                <ion-note color="danger">offline</ion-note>
                 <h2>{{vehicle.name}}</h2>
 
                 <div style="display:flex">

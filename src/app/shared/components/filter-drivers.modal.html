@@ -19,16 +19,12 @@
         </ion-item>
     </ion-radio-group>
     <ion-title>
-        <h4>Asc/ Desc:</h4>
+        <h4>Order:</h4>
     </ion-title>
-    <ion-radio-group (ionChange)="changedOrder($event)">
-        <ion-item>
-            <ion-label>Ascending</ion-label>
-            <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>Descending</ion-label>
-            <ion-radio slot="start" value="1"></ion-radio>
+    <ion-radio-group [(ngModel)]="filter.order">
+        <ion-item *ngFor="let sortOrder of sortingOrders">
+            <ion-label>{{sortOrder.label}}</ion-label>
+            <ion-radio slot="start" [value]="sortOrder.value"></ion-radio>
         </ion-item>
     </ion-radio-group>
     <ion-grid>
