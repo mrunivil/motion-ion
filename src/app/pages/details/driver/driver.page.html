@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
-        <ion-title>-- Driver Name --</ion-title>
+        <ion-title>{{(driver$|async)?.name}}</ion-title>
     </ion-toolbar>
 </ion-header>
 

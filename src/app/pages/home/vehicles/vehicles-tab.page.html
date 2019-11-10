@@ -12,7 +12,7 @@
             <h4>Driving</h4>
         </ion-list-header>
         <ion-item *ngFor="let vehicle of vehiclesService.getVehicles()|async" class="ion-activatable"
-            (click)="selectVehicle()">
+            (click)="selectVehicle(vehicle)">
             <ion-avatar class="ion-margin-end">
                 <ion-img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW0iUe_-XpowkOdbcMFZrJuvw7am1usasqA4X3n3821TNrV4qD&s">
@@ -40,7 +40,7 @@
             <h4>Resting</h4>
         </ion-list-header>
         <ion-item *ngFor="let vehicle of vehiclesService.getVehicles()|async" class="ion-activatable"
-            (click)="selectVehicle()">
+            (click)="selectVehicle(vehicle)">
             <ion-avatar class="ion-margin-end">
                 <ion-img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW0iUe_-XpowkOdbcMFZrJuvw7am1usasqA4X3n3821TNrV4qD&s">

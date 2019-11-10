@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
-        <ion-title>-- Vehicle Name --</ion-title>
+        <ion-title>{{(vehicle$|async)?.name}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
