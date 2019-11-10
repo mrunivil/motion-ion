@@ -12,41 +12,29 @@
             Sort by:
         </h4>
     </ion-title>
-    <ion-radio-group>
-        <ion-item>
-            <ion-label>Remaining driving time</ion-label>
-            <ion-radio slot="start" value="0" checked></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>Last Update</ion-label>
-            <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>Online Status</ion-label>
-            <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>Driving Status</ion-label>
-            <ion-radio slot="start" value="3"></ion-radio>
+    <ion-radio-group [(ngModel)]="filter.category">
+        <ion-item *ngFor="let category of categories">
+            <ion-label>{{category.label}}</ion-label>
+            <ion-radio slot="start" [value]="category.value"></ion-radio>
         </ion-item>
     </ion-radio-group>
     <ion-title>
         <h4>Asc/ Desc:</h4>
     </ion-title>
-    <ion-radio-group>
+    <ion-radio-group (ionChange)="changedOrder($event)">
         <ion-item>
             <ion-label>Ascending</ion-label>
-            <ion-radio slot="start" value="a" checked></ion-radio>
+            <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
         <ion-item>
             <ion-label>Descending</ion-label>
-            <ion-radio slot="start" value="d"></ion-radio>
+            <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
     </ion-radio-group>
     <ion-grid>
         <ion-row class="ion-justify-content-end">
             <ion-col size="3">
-                <ion-button color="primary" fill="outline" (click)="submit()">Reset</ion-button>
+                <ion-button color="primary" fill="outline" (click)="resetFilters()">Reset</ion-button>
             </ion-col>
             <ion-col size="3">
                 <ion-button color="primary" (click)="submit()">Apply</ion-button>

@@ -1,11 +1,12 @@
-import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { Driver } from 'src/app/model/driver';
-import { SelectDriver } from './actions';
 import { Navigate } from '@ngxs/router-plugin';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Driver } from 'src/app/model/driver';
+import { DriverFilter } from 'src/app/shared/filters/driver.filter';
+import { ApplyDriverFilters, SelectDriver } from './actions';
 
 export class DriversStateModel {
     selected: Driver;
-
+    filter: DriverFilter;
 
 }
 
@@ -13,6 +14,7 @@ export class DriversStateModel {
     name: 'drivers',
     defaults: {
         selected: undefined,
+        filter: new DriverFilter()
     }
 })
 export class DriversState {
@@ -20,6 +22,8 @@ export class DriversState {
 
     @Selector()
     static selectedDriver(ctx: DriversStateModel) { return ctx.selected; }
+    @Selector()
+    static filter(ctx: DriversStateModel) { return ctx.filter; }
 
     @Action(SelectDriver)
     selectDriver({ dispatch, patchState }: StateContext<DriversStateModel>, { payload }: SelectDriver) {
@@ -27,5 +31,11 @@ export class DriversState {
             selected: payload
         });
         dispatch(new Navigate(['/driver']));
+    }
+    @Action(ApplyDriverFilters)
+    applyFilters({ patchState }: StateContext<DriversStateModel>, { payload }: ApplyDriverFilters) {
+        patchState({
+            filter: payload
+        });
     }
 }
