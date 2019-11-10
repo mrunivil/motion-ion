@@ -1,6 +1,9 @@
 import { DriversService } from './../../../services/drivers/drivers.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { SelectDriver } from 'src/store/drivers/actions';
+import { Driver } from 'src/app/model/driver';
 
 @Component({
     selector: 'app-drivers-tab',
@@ -9,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class DriversTabPage {
 
-    constructor(public driversService: DriversService, private router: Router) { }
+    constructor(public driversService: DriversService, private store: Store) { }
 
-    selectDriver() {
-        this.router.navigate(['/driver']);
+    selectDriver(selected: Driver) {
+        this.store.dispatch(new SelectDriver(selected));
     }
 
 }

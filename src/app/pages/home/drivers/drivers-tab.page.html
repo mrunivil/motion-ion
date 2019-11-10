@@ -13,7 +13,7 @@
             <h4>Driving</h4>
         </ion-list-header>
         <ion-item *ngFor="let driver of driversService.getDrivers()|async" class="ion-activatable"
-            (click)="selectDriver()">
+            (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
@@ -40,7 +40,7 @@
             <h4>Resting</h4>
         </ion-list-header>
         <ion-item *ngFor="let driver of driversService.getDrivers() |async" class="ion-activatable"
-            (click)="selectDriver()">
+            (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
