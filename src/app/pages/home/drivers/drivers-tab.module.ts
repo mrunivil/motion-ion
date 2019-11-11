@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { DriversTabPage } from './drivers-tab.page';
 import { NgxsModule } from '@ngxs/store';
 import { DriversState } from 'src/store/drivers/drivers.state';
-import { FilterDriversModalComponent } from 'src/app/shared/components/filter-drivers.modal';
+import { FilterDriversModalComponent } from 'src/app/shared/components/filter/filter-drivers.modal';
 import { SortDriversPipe, OnlineFilterPipe, TimeSincePipe } from './drivers.pipes';
 
 @NgModule({

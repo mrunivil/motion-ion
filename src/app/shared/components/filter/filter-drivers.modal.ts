@@ -3,8 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { ApplyDriverFilters } from 'src/store/drivers/actions';
 import { DriversState } from 'src/store/drivers/drivers.state';
-import { DriverFilter, DRIVER_FILTERS } from '../filters/driver.filter';
-import { SortingDirection as SortingOrder, SORTING_ORDERS } from '../filters/sorting-directions';
+import { DriverFilter, DRIVER_FILTERS } from '../../filters/driver.filter';
+import { SortingDirection as SortingOrder, SORTING_ORDERS } from '../../filters/sorting-directions';
 
 @Component({
     selector: 'app-modal-filter-drivers',

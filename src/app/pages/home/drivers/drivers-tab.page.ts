@@ -5,7 +5,7 @@ import { Store, Select } from '@ngxs/store';
 import { SelectDriver } from 'src/store/drivers/actions';
 import { Driver } from 'src/app/model/driver';
 import { ActionSheetController, ModalController } from '@ionic/angular';
-import { FilterDriversModalComponent } from 'src/app/shared/components/filter-drivers.modal';
+import { FilterDriversModalComponent } from 'src/app/shared/components/filter/filter-drivers.modal';
 import { DriversState } from 'src/store/drivers/drivers.state';
 import { Observable } from 'rxjs';
 import { DriverFilter } from 'src/app/shared/filters/driver.filter';

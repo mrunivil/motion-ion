@@ -1,0 +1,21 @@
+export interface Site {
+    lSiteID?: number,
+    sSiteName?: string,
+    sSiteDescription?: string,
+    sSiteReference?: string,
+    lWorkingDays?: number,
+    lInstanceID?: number,
+    sComments?: string,
+    sAddress1?: string,
+    sAddress2?: string,
+    sPostalCode?: number,
+    sEmail?: string,
+    sTelephone?: string,
+    sFax?: string,
+    sContact?: number,
+    dUpdateDate?: Date,
+    iMinimumworkingtime?: number,
+    iSC_ID?: number,
+    iTempId?: number,
+    iParentSiteId?: number
+}

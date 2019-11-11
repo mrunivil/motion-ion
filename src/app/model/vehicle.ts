@@ -10,3 +10,15 @@ export interface Vehicle {
 export enum VehicleStatus {
     resting, driving
 }
+
+
+export interface Vehicle2 {
+    veh_id_no?: number,
+    veh_reg_no?: string,
+    veh_dsc?: string,
+    SiteID?: number,
+    bTracking?: boolean,
+    veh_flt_no?: string,
+    visible?: boolean,
+    finishDate?: Date
+}
