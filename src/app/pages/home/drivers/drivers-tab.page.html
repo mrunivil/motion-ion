@@ -25,7 +25,7 @@
         (driversService.getDrivers()
         |async
         |online:true
-        |sortDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        |sorting:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
@@ -53,7 +53,7 @@
         (driversService.getDrivers()
         |async
         |online:false
-        |sortDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        |sorting:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>

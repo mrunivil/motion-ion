@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { Store } from '@ngxs/store';
-import { ApplyDriverFilters } from 'src/store/drivers/actions';
-import { DriversState } from 'src/store/drivers/drivers.state';
-import { DriverFilter, DRIVER_FILTERS } from '../filters/driver.filter';
-import { SortingDirection as SortingOrder, SORTING_ORDERS } from '../filters/sorting-directions';
+import { ModalController, NavParams } from '@ionic/angular';
+import { DriverFilter as CustomFilter, FILTER_CATEGORIES as FILTER_CATEGORIES } from '../filters/driver.filter';
+import { SORTING_ORDERS } from '../filters/sorting-directions';
 
 @Component({
     selector: 'app-modal-filter-drivers',
     templateUrl: 'filter-drivers.modal.html'
 })
-export class FilterDriversModalComponent {
+export class FilterModalComponent {
 
-    filter: DriverFilter;
-    categories = DRIVER_FILTERS;
+    filter: CustomFilter;
+    categories = FILTER_CATEGORIES;
     sortingOrders = SORTING_ORDERS;
 
-    constructor(private controller: ModalController, private store: Store) {
-        this.filter = { ...this.store.selectSnapshot(DriversState.filter) };
+    title: string;
+
+    constructor(private controller: ModalController, private navParams: NavParams) {
+        this.filter = this.navParams.get('filter');
+        this.title = this.navParams.get('title');
     }
 
     dismiss() {
@@ -25,11 +25,10 @@ export class FilterDriversModalComponent {
     }
 
     resetFilters() {
-        this.filter = new DriverFilter();
+        this.filter = new CustomFilter();
     }
 
     submit() {
-        this.store.dispatch(new ApplyDriverFilters(this.filter));
-        this.controller.dismiss();
+        this.controller.dismiss(this.filter);
     }
 }

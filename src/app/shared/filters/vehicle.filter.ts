@@ -1,7 +1,7 @@
 import { SortingDirection as SortingOrder } from './sorting-directions';
 import { FilterCategory } from './filter-category';
 
-export class DriverFilter {
+export class VehicleFilter {
     category: FilterCategory;
     order: SortingOrder;
     constructor() {

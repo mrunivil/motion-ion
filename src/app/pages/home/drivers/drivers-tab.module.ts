@@ -1,29 +1,25 @@
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DriversTabPage } from './drivers-tab.page';
+import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { NgxsModule } from '@ngxs/store';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { DriversState } from 'src/store/drivers/drivers.state';
-import { FilterDriversModalComponent } from 'src/app/shared/components/filter-drivers.modal';
-import { SortDriversPipe, OnlineFilterPipe, TimeSincePipe } from './drivers.pipes';
+import { OnlineFilterPipe, TimeSincePipe, SortingPipe } from '../../../shared/pipes/common.pipes';
+import { DriversTabPage } from './drivers-tab.page';
 
 @NgModule({
     imports: [
         IonicModule,
         CommonModule,
         FormsModule,
+        SharedModule,
         NgxsModule.forFeature([DriversState]),
         RouterModule.forChild([{ path: '', component: DriversTabPage }])
     ],
-    entryComponents: [FilterDriversModalComponent],
     declarations: [
         DriversTabPage,
-        FilterDriversModalComponent,
-        SortDriversPipe,
-        OnlineFilterPipe,
-        TimeSincePipe
     ]
 })
 export class DriversTabPageModule { }

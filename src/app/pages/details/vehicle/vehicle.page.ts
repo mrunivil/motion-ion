@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { VehiclesState } from 'src/store/vehicles/drivers.state';
+import { VehiclesState } from 'src/store/vehicles/vehicles.state';
 import { Vehicle } from 'src/app/model/vehicle';
 import { Observable } from 'rxjs';
 

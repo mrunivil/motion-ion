@@ -1,19 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Driver } from 'src/app/model/driver';
-import { DriverFilterCategory } from 'src/app/shared/filters/driver-filter-category';
+import { FilterCategory } from 'src/app/shared/filters/filter-category';
 import { DriverFilter } from 'src/app/shared/filters/driver.filter';
 import { SortingDirection } from 'src/app/shared/filters/sorting-directions';
 
-@Pipe({ name: 'sortDrivers' })
-export class SortDriversPipe implements PipeTransform {
+@Pipe({ name: 'sorting' })
+export class SortingPipe implements PipeTransform {
     transform(value: Driver[], filter: DriverFilter): Driver[] {
         return value.sort((a: Driver, b: Driver) => {
             let ret = 0;
-            if (filter.category === DriverFilterCategory.remainingTime) {
+            if (filter.category === FilterCategory.remainingTime) {
                 ret = a.remainingTime > b.remainingTime ? -1 : 1;
-            } else if (filter.category === DriverFilterCategory.drivingStatus) {
+            } else if (filter.category === FilterCategory.drivingStatus) {
                 ret = a.status > b.status ? -1 : 1;
-            } else if (filter.category === DriverFilterCategory.lastUpdate) {
+            } else if (filter.category === FilterCategory.lastUpdate) {
                 ret = a.lastUpdate > b.lastUpdate ? -1 : 1;
             }
             return filter.order === SortingDirection.descending ? ret * -1 : ret;
