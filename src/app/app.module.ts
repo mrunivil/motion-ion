@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { environment } from 'src/environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { environment } from 'src/environments/environment';
         NgxsReduxDevtoolsPluginModule.forRoot({
             disabled: environment.production
         }),
-        NgxsRouterPluginModule.forRoot()],
+        NgxsRouterPluginModule.forRoot(),
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
     providers: [
         StatusBar,
         SplashScreen,
