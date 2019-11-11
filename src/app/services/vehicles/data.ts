@@ -5,6 +5,7 @@ export default [
         status: 3,
         online: true,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
     {
@@ -13,6 +14,7 @@ export default [
         status: 3,
         online: true,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
     {
@@ -21,6 +23,7 @@ export default [
         status: 3,
         online: true,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
     {
@@ -29,6 +32,7 @@ export default [
         status: 3,
         online: true,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
     {
@@ -37,6 +41,7 @@ export default [
         status: 3,
         online: true,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
     {
@@ -45,6 +50,7 @@ export default [
         status: 3,
         online: false,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
     {
@@ -53,6 +59,7 @@ export default [
         status: 3,
         online: false,
         lastUpdate: Date.now() - (1000 * 60 * (5 + Math.random() * 10)),
+        remainingTime: 201500320,
         driver: undefined,
     },
 ];

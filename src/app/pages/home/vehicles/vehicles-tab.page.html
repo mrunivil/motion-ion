@@ -24,8 +24,8 @@
         <ion-item *ngFor="let vehicle of 
         (vehiclesService.getVehicles()
         |async
-        |online:true
-        |sorting:(filter$|async))" class="ion-activatable" (click)="selectVehicle(vehicle)">
+        |vOnline:true
+        |sortingVehicles:(filter$|async))" class="ion-activatable" (click)="selectVehicle(vehicle)">
             <ion-avatar class="ion-margin-end">
                 <ion-img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW0iUe_-XpowkOdbcMFZrJuvw7am1usasqA4X3n3821TNrV4qD&s">
@@ -52,8 +52,8 @@
         <ion-item *ngFor="let vehicle of 
         (vehiclesService.getVehicles()
         |async
-        |online:false
-        |sorting:(filter$|async))" class="ion-activatable" (click)="selectVehicle(vehicle)">
+        |vOnline:false
+        |sortingVehicles:(filter$|async))" class="ion-activatable" (click)="selectVehicle(vehicle)">
             <ion-avatar class="ion-margin-end">
                 <ion-img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW0iUe_-XpowkOdbcMFZrJuvw7am1usasqA4X3n3821TNrV4qD&s">

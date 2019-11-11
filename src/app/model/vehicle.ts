@@ -1,10 +1,11 @@
-import { NumericValueAccessor } from '@ionic/angular';
-import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
+import { OnlineStatus } from './online';
 
-export interface Vehicle {
+export interface Vehicle extends OnlineStatus {
     name: string;
     speed: number;
     status: VehicleStatus;
+    remainingTime: number;
+    lastUpdate: number;
 }
 
 export enum VehicleStatus {

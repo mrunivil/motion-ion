@@ -24,8 +24,8 @@
         <ion-item *ngFor="let driver of 
         (driversService.getDrivers()
         |async
-        |online:true
-        |sorting:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        |dOnline:true
+        |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
@@ -51,8 +51,8 @@
         <ion-item *ngFor="let driver of 
         (driversService.getDrivers()
         |async
-        |online:false
-        |sorting:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        |dOnline:false
+        |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>

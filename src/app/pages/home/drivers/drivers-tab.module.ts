@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { NgxsModule } from '@ngxs/store';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DriversState } from 'src/store/drivers/drivers.state';
-import { OnlineFilterPipe, TimeSincePipe, SortingPipe } from '../../../shared/pipes/common.pipes';
+import { VehiclesOnlineFilterPipe, TimeSincePipe, SortingDriversPipe } from '../../../shared/pipes/common.pipes';
 import { DriversTabPage } from './drivers-tab.page';
 
 @NgModule({
