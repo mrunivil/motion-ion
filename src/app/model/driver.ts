@@ -1,5 +1,3 @@
-
-
 export interface Driver {
     name: string;
     speed: number;
@@ -13,10 +11,9 @@ export enum DriverStatus {
     resting = 0, driving = 1
 }
 
-
 import { OSMLocation } from './location';
 
-export interface Driver2 {
+export interface DriverObject {
     drv_id_no?: number,
     drv_ttl?: string,
     drv_for_nm?: string,

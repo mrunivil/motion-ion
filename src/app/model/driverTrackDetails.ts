@@ -1,6 +1,6 @@
 import { OSMLocation, MapLocation } from './location';
 
-export interface driverTrackDetails{
+export interface DriverTrackDetails{
     DriverId?: number,
     DriverSiteID?: number,
     DriverGPSTimeStamp?: number,
