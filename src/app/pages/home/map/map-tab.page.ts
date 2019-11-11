@@ -28,6 +28,8 @@ export class MapTabPage implements AfterViewInit {
         this.store.dispatch(new ToggleAutoRefresh());
     }
 
+    toggleFilter() { }
+
     ngAfterViewInit() {
         this.platform = new H.service.Platform({
             apikey: 'guQQwicU7quqkL5j1Mn1q917Js7XxEvYH6HJ1-fwRQs'

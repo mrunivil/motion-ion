@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Driver } from 'src/app/model/driver';
-import { FilterModalComponent } from 'src/app/shared/components/filter-drivers.modal';
+import { FilterModalComponent } from 'src/app/shared/components/filter/common-filter.modal';
 import { DriverFilter } from 'src/app/shared/filters/driver.filter';
 import { ApplyDriversFilters, SelectDriver } from 'src/store/drivers/actions';
 import { DriversState } from 'src/store/drivers/drivers.state';

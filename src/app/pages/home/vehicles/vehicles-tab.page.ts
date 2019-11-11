@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Store, Select } from '@ngxs/store';
 import { Vehicle } from 'src/app/model/vehicle';
-import { FilterModalComponent } from 'src/app/shared/components/filter-drivers.modal';
+import { FilterModalComponent } from 'src/app/shared/components/filter/common-filter.modal';
 import { ApplyVehiclesFilters, SelectVehicle } from 'src/store/vehicles/actions';
 import { VehiclesState } from 'src/store/vehicles/vehicles.state';
 import { VehiclesService } from './../../../services/vehicles/vehicles.service';

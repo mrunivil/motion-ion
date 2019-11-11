@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { VehiclesTabPage } from './vehicles-tab.page';
 import { NgxsModule } from '@ngxs/store';
 import { VehiclesState } from 'src/store/vehicles/vehicles.state';
-import { FilterModalComponent } from 'src/app/shared/components/filter-drivers.modal';
+import { FilterModalComponent } from 'src/app/shared/components/filter/common-filter.modal';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({

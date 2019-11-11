@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { DriverFilter as CustomFilter, FILTER_CATEGORIES as FILTER_CATEGORIES } from '../filters/driver.filter';
-import { SORTING_ORDERS } from '../filters/sorting-directions';
+import { DriverFilter as CustomFilter, FILTER_CATEGORIES as FILTER_CATEGORIES } from '../../filters/driver.filter';
+import { SORTING_ORDERS } from '../../filters/sorting-directions';
 
 @Component({
-    selector: 'app-modal-filter-drivers',
-    templateUrl: 'filter-drivers.modal.html'
+    selector: 'app-modal-filter-common',
+    templateUrl: 'common-filter.modal.html'
 })
 export class FilterModalComponent {
 

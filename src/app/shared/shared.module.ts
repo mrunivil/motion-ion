@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FilterModalComponent } from './components/filter-drivers.modal';
+import { FilterModalComponent } from './components/filter/common-filter.modal';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
