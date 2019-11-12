@@ -24,14 +24,13 @@
         <ion-item *ngFor="let driver of 
         (driversService.getDrivers()
         |async
-        |online:true
-        |sortDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        |dOnline:true
+        |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
             </ion-avatar>
             <ion-label>
-                <ion-note color="success">online</ion-note>
                 <h2>{{driver.name}}</h2>
                 <div style="display:flex">
                     <ion-icon name="pin"></ion-icon>
@@ -52,14 +51,13 @@
         <ion-item *ngFor="let driver of 
         (driversService.getDrivers()
         |async
-        |online:false
-        |sortDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        |dOnline:false
+        |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
             </ion-avatar>
             <ion-label>
-                <ion-note color="danger">offline</ion-note>
                 <h2>{{driver.name}}</h2>
                 <div style="display:flex">
                     <ion-icon name="pin"></ion-icon>

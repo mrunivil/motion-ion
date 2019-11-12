@@ -1,8 +1,18 @@
-<ion-header translucent>
+<ion-header>
     <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button (click)="toggleFilter()">
+                <ion-icon name="funnel"></ion-icon>
+            </ion-button>
+        </ion-buttons>
         <ion-title>
             Vehicles
         </ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon name="exit"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -11,24 +21,24 @@
         <ion-list-header>
             <h4>Online</h4>
         </ion-list-header>
-        <ion-item *ngFor="let vehicle of vehiclesService.getVehicles()|async" class="ion-activatable"
-            (click)="selectVehicle(vehicle)">
+        <ion-item *ngFor="let vehicle of 
+        (vehiclesService.getVehicles()
+        |async
+        |vOnline:true
+        |sortingVehicles:(filter$|async))" class="ion-activatable" (click)="selectVehicle(vehicle)">
             <ion-avatar class="ion-margin-end">
                 <ion-img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW0iUe_-XpowkOdbcMFZrJuvw7am1usasqA4X3n3821TNrV4qD&s">
                 </ion-img>
             </ion-avatar>
             <ion-label>
-                <ion-note color="success">online</ion-note>
                 <h2>{{vehicle.name}}</h2>
-
                 <div style="display:flex">
                     <ion-icon name="pin"></ion-icon>
                     <ion-label class="ion-padding-start">Paderborn</ion-label>
                     <ion-icon class="ion-padding-start" name="sync"></ion-icon>
-                    <ion-label class="ion-padding-start">4 min ago</ion-label>
+                    <ion-label class="ion-padding-start">{{vehicle.lastUpdate|ago}}</ion-label>
                 </div>
-
             </ion-label>
             <ion-icon name="arrow-dropright"></ion-icon>
             <ion-ripple-effect></ion-ripple-effect>
@@ -39,22 +49,23 @@
         <ion-list-header>
             <h4>Offline</h4>
         </ion-list-header>
-        <ion-item *ngFor="let vehicle of vehiclesService.getVehicles()|async" class="ion-activatable"
-            (click)="selectVehicle(vehicle)">
+        <ion-item *ngFor="let vehicle of 
+        (vehiclesService.getVehicles()
+        |async
+        |vOnline:false
+        |sortingVehicles:(filter$|async))" class="ion-activatable" (click)="selectVehicle(vehicle)">
             <ion-avatar class="ion-margin-end">
                 <ion-img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW0iUe_-XpowkOdbcMFZrJuvw7am1usasqA4X3n3821TNrV4qD&s">
                 </ion-img>
             </ion-avatar>
             <ion-label>
-                <ion-note color="danger">offline</ion-note>
                 <h2>{{vehicle.name}}</h2>
-
                 <div style="display:flex">
                     <ion-icon name="pin"></ion-icon>
                     <ion-label class="ion-padding-start">Paderborn</ion-label>
                     <ion-icon class="ion-padding-start" name="sync"></ion-icon>
-                    <ion-label class="ion-padding-start">4 min ago</ion-label>
+                    <ion-label class="ion-padding-start">{{vehicle.lastUpdate|ago}}</ion-label>
                 </div>
 
             </ion-label>

@@ -6,7 +6,7 @@ export class SelectDriver {
     constructor(public payload: Driver) { }
 }
 
-export class ApplyDriverFilters {
+export class ApplyDriversFilters {
     static readonly type = '[DRIVERS] APPLY FILTERS';
     constructor(public payload: DriverFilter) { }
 }

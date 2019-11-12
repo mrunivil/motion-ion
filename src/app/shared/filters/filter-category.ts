@@ -1,4 +1,4 @@
-export enum DriverFilterCategory {
+export enum FilterCategory {
     remainingTime,
     lastUpdate,
     onlineStatus,

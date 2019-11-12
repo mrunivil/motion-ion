@@ -1,7 +1,9 @@
-export interface Driver {
+import { OnlineStatus } from './online';
+
+
+export interface Driver extends OnlineStatus {
     name: string;
     speed: number;
-    online: boolean;
     status: DriverStatus;
     remainingTime: number;
     lastUpdate: number;
