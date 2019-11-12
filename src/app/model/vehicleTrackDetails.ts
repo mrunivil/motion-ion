@@ -1,7 +1,7 @@
 import { OSMLocation } from './location';
 import { DriverActivityTrace } from './driver';
 
-export interface driverTrackDetails{
+export interface VehicleTrackDetails{
     DriverShiftStart?: Date,
     DriverShiftEnd?: Date,
     CoDriverShiftStart?: Date,

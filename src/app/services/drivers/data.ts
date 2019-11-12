@@ -1,5 +1,6 @@
 export default [
     {
+        id: 0,
         name: 'Max Mustermann',
         speed: 0,
         status: 0,
@@ -9,6 +10,7 @@ export default [
         driver: undefined,
     },
     {
+        id: 1,
         name: 'Peter Mustermann',
         speed: 0,
         status: 1,
@@ -18,6 +20,7 @@ export default [
         driver: undefined,
     },
     {
+        id: 2,
         name: 'Lars Mustermann',
         speed: 0,
         status: 1,
@@ -27,6 +30,7 @@ export default [
         driver: undefined,
     },
     {
+        id: 3,
         name: 'Hendrik Mustermann',
         speed: 0,
         status: 0,

@@ -1,19 +1,28 @@
 import { OnlineStatus } from './online';
+import { OSMLocation } from './location';
+import { DriverTrackDetails } from './driverTrackDetails';
 
-
-export interface Driver extends OnlineStatus {
+export class Driver extends OnlineStatus {
+    id: number;
     name: string;
-    speed: number;
-    status: DriverStatus;
-    remainingTime: number;
-    lastUpdate: number;
+    site_id?: number;
+    status?: DriverStatus;
+    remainingTime?: number;
+    lastUpdate?: number;
+    trackDetails?: DriverTrackDetails;
+
+    constructor(drvObj: DriverObject) {
+        super(drvObj.dOnlineStatus);
+        this.id = drvObj.drv_id_no;
+        this.site_id = drvObj.lSiteID;
+        this.name = drvObj.drv_for_nm + ' ' + drvObj.drv_sur_nm;
+        this.lastUpdate = new Date(drvObj.dUpdateDate).valueOf();
+    }
 }
 
 export enum DriverStatus {
     resting = 0, driving = 1
 }
-
-import { OSMLocation } from './location';
 
 export interface DriverObject {
     drv_id_no?: number,
@@ -22,7 +31,7 @@ export interface DriverObject {
     drv_sur_nm?: string,
     drv_ref_no?: string,
     lSiteID?: number,
-    dUpdateDate?: Date,
+    dUpdateDate?: string,
     dOnlineStatus?: string,
     AllowMsg_App?: number,
     iAllowToUseFleetApp?: number,

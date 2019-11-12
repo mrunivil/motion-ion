@@ -7,27 +7,20 @@ export const environment = {
   apikey: "guQQwicU7quqkL5j1Mn1q917Js7XxEvYH6HJ1-fwRQs"
 };
 
-const BASE_URL = "http://localhost:3000/api/";
+const BASE_URL_LOCAL = "http://localhost:3000/api/";
+const BASE_URL = "https://www.my-fis.com/motion2/api/";
 
 export const urls = {
-  GET_ALL_DRIVER: BASE_URL + "drivers",
-  GET_DRIVER_BY_ID: (id: number) => `${BASE_URL}drivers/${id}`,
-  GET_ALL_SITES: BASE_URL + "sites",
-  GET_SITE_BY_ID: (id: number) => `${BASE_URL}sites/${id}`,
-  GET_ALL_VEHICLE: BASE_URL + "vehicles",
-  GET_VEHICLE_BY_ID: (id: number) => `${BASE_URL}vehicles/${id}`,
-  GET_VEHICLE_POSITION: BASE_URL + "vehiclePositions2",
-  GET_VEHICLE_POSITION_BY_ID: (id: number) => `${BASE_URL}vehiclePositions2/${id}`,
-  GET_VEHICLE_TRACK_DETAILS: BASE_URL + "vehicleTrackDetails",
-  GET_VEHICLE_TRACK_DETAILS_BY_ID: (id: number) => `${BASE_URL}vehicleTrackDetails/${id}`,
-  GET_DRIVER_TRACK_DETAILS: BASE_URL + "driverTrackDetails",
-  GET_DRIVER_TRACK_DETAILS_BY_ID: (id: number) => `${BASE_URL}driverTrackDetails/${id}`,
+  // will not work on prod
+  // GET_ALL_DRIVER: BASE_URL_LOCAL + "drivers",
+  // GET_ALL_SITES: BASE_URL_LOCAL + "sites",
+  // GET_ALL_VEHICLE: BASE_URL_LOCAL + "vehicles",
+
+  //will not work on local
+  GET_ALL_DRIVER: BASE_URL + "planner/api/getDrivers",
+  GET_ALL_SITES: BASE_URL + "planner/api/getAllSites",
+  GET_ALL_VEHICLE: BASE_URL + "planner/api/getVehicles",
+  GET_VEHICLE_POSITION_BY_IDS: (vehicleIds: number[]) => `${BASE_URL}outbound/api/getVehiclePositions2/${vehicleIds}`,
+  GET_VEHICLE_TRACK_DETAILS_BY_IDS: (vehicleIds: number[]) => `${BASE_URL}outbound/api/getVehicleTrackDetails2/${vehicleIds}`,
+  GET_DRIVER_TRACK_DETAILS_BY_IDS: (driverIds: number[]) => `${BASE_URL}outbound/api/getDriverTrackDetails2/[${driverIds}]`,  
 }
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.

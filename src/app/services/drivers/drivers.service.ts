@@ -1,13 +1,14 @@
 import { Driver, DriverObject } from './../../model/driver';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, combineLatest } from 'rxjs';
 import data from './data';
 import { of } from 'rxjs';
 import { urls } from "src/environments/environment";
-import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { DriverTrackDetails } from 'src/app/model/driverTrackDetails';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, toArray, switchMapTo, switchMap } from 'rxjs/operators';
 import { ErrorService } from '../error/error.service';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -18,12 +19,16 @@ export class DriversService {
     getDrivers(): Observable<Driver[]> {
         return of(data);
     }
-    getDriversObjects(): Observable<DriverObject[]> {
-        return this.http.get<DriverObject[]>(urls.GET_ALL_DRIVER).pipe(catchError(this.error.handleError));
+    getDriversObjects(): Observable<Driver[]> {
+        return this.http.get<DriverObject[]>(urls.GET_ALL_DRIVER)
+            .pipe(
+                map(data => data.map(driver => new Driver(driver))),
+                catchError(this.error.handleError));
     }
-    getDriverTrackDetails(): Observable<DriverTrackDetails[]> {
-        return this.http.get<DriverTrackDetails[]>(urls.GET_DRIVER_TRACK_DETAILS).pipe(catchError(this.error.handleError));
+    getDriverTrackDetails(driverIds: number[]): Observable<DriverTrackDetails[]> {
+        return this.http.get<DriverTrackDetails[]>(urls.GET_DRIVER_TRACK_DETAILS_BY_IDS(driverIds)).pipe(catchError(this.error.handleError));
     }
+
 
 }
 
