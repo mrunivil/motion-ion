@@ -1,7 +1,8 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { mergeMap, materialize, delay, dematerialize } from 'rxjs/operators';
 
 
 const drivers = [
@@ -80,40 +81,34 @@ const drivers = [
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
-
-    request: HttpRequest<any>;
-    next: HttpHandler;
-
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.request = request;
-        this.next = next;
-        if (environment.production) {
-            return this.next.handle(this.request);
-        } else {
-            this.handleRoute();
+        // wrap in delayed observable to simulate server api call
+        return this.handleRoute(request, next).pipe(materialize(), delay(500), dematerialize());
+
+    }
+    handleRoute(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const { url, method, headers, body } = request;
+
+        if (!environment.production) {
+            if (url.endsWith('/api/getDrivers') && method === 'GET') {
+                return of(this.getDrivers());
+            }
         }
+        return next.handle(request);
     }
 
-    handleRoute() {
-        if (this.request.url.endsWith('api/getDrivers') && this.request.method === 'GET') {
-            return this.getDrivers;
-        }
-        return this.next.handle(this.request);
+    ok(body?: any) {
+        return new HttpResponse({ status: 200, body });
     }
 
-    getDrivers(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (environment.production) {
-            return next.handle(request);
-        } else {
-            return of(new HttpResponse({ status: 200, body: drivers }));
-        }
+    getDrivers() {
+        return this.ok(drivers);
     }
-
-    ok(body?) {
-        return of(new HttpResponse({ status: 200, body }));
-    }
-
-
-
 }
 
+export const fakeBackendProvider = {
+    // use fake backend in place of Http service for backend-less development
+    provide: HTTP_INTERCEPTORS,
+    useClass: FakeBackendInterceptor,
+    multi: true
+};
