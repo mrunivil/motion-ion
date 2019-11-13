@@ -16,9 +16,6 @@ export class DriversService {
 
     constructor(private http: HttpClient, private error: ErrorService) { }
 
-    getDrivers(): Observable<Driver[]> {
-        return of(data);
-    }
     getDriversObjects(): Observable<Driver[]> {
         return this.http.get<DriverObject[]>(urls.GET_ALL_DRIVER)
             .pipe(
