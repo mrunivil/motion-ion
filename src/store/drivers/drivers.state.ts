@@ -2,7 +2,7 @@ import { Navigate } from '@ngxs/router-plugin';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Driver } from 'src/app/model/driver';
 import { DriverFilter } from 'src/app/shared/filters/driver.filter';
-import { ApplyDriversFilters, SelectDriver, GetAllDriver, GetDriverTrackDetailsByIds } from './actions';
+import { ApplyDriversFilters, SelectDriver, GetAllDriver, GetDriverTrackDetailsByIds, UpdateDriverTrackDetails } from './actions';
 import { DriversService } from 'src/app/services/drivers/drivers.service';
 import { DriverTrackDetails } from 'src/app/model/driverTrackDetails';
 
@@ -29,22 +29,9 @@ export class DriversState {
     @Selector()
     static selectedDriver(ctx: DriversStateModel) { return ctx.selected; }
     @Selector()
-    static selectedDriverWithTrackDetails(ctx: DriversStateModel) { 
-        let detailedDriver = ctx.selected;
-        detailedDriver.trackDetails = ctx.driverTrackDetails.find(track => detailedDriver.id === track.DriverId)
-        return detailedDriver; 
-    }
-    @Selector()
     static filter(ctx: DriversStateModel) { return ctx.filter; }
     @Selector()
     static driverList(ctx: DriversStateModel) { return ctx.driverList; }
-    @Selector()
-    static driverListWithTrackDetails(ctx: DriversStateModel) {
-        ctx.driverList.forEach(driver => {
-            driver.trackDetails = ctx.driverTrackDetails.find(track => driver.id === track.DriverId)
-        });
-        return ctx.driverList;
-    }
     @Selector()
     static driverTrackDetails(ctx: DriversStateModel) { return ctx.driverTrackDetails; }
 
@@ -70,11 +57,25 @@ export class DriversState {
         );
     }
     @Action(GetDriverTrackDetailsByIds)
-    getDriverTrackDetailsByIds({ patchState }: StateContext<DriversStateModel>, { driverIds }: GetDriverTrackDetailsByIds) {
+    getDriverTrackDetailsByIds({ patchState, dispatch }: StateContext<DriversStateModel>, { driverIds }: GetDriverTrackDetailsByIds) {
         this.driverService.getDriverTrackDetails(driverIds).subscribe(
-            (result: DriverTrackDetails[]) => patchState({
-                driverTrackDetails: result
-            })
+            (result: DriverTrackDetails[]) => {
+                patchState({
+                    driverTrackDetails: result
+                })
+                dispatch(UpdateDriverTrackDetails)
+            }
         );
+    }
+    @Action(UpdateDriverTrackDetails)
+    updateDriverTrackDetails({ patchState, getState }: StateContext<DriversStateModel>) {
+        let driversCopy = getState().driverList;
+        let trackCopy = getState().driverTrackDetails;
+        driversCopy.forEach(driver => {
+            driver.trackDetails = trackCopy.find(track => driver.id === track.DriverId)
+        });
+        patchState({
+            driverList: driversCopy
+        })
     }
 }

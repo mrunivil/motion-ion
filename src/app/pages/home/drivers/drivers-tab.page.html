@@ -19,10 +19,13 @@
 <ion-content>
     <ion-list>
         <ion-list-header>
-            <h4>Driver:</h4>
+            <h4>Online</h4>
         </ion-list-header>
-        <ion-item *ngFor="let driver of 
-        (detailedDriver$|async|sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+        <ion-item *ngFor="let driver of (
+            driverList$
+        |async
+        |dOnline:true
+        |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
             <ion-avatar class="ion-margin-end">
                 <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
                 </ion-img>
@@ -32,7 +35,41 @@
                 <div style="display:flex">
                     <div style="display:flex" *ngIf="driver.trackDetails">
                         <ion-icon name="clock"></ion-icon>
-                        <ion-label class="ion-padding-start">RDDP: {{driver.trackDetails.RemainingDailyDrivingPeriod}} - RTTNRB: {{driver.trackDetails.RemainingTimeTillNextRestBreak}}</ion-label>
+                        <ion-label class="ion-padding-start">RDDP: {{driver.trackDetails.RemainingDailyDrivingPeriod}} -
+                            RTTNRB: {{driver.trackDetails.RemainingTimeTillNextRestBreak}}</ion-label>
+                    </div>
+                    <div style="display:flex" *ngIf="!driver.trackDetails">
+                        no time info
+                    </div>
+                    <ion-icon class="ion-padding-start" name="sync"></ion-icon>
+                    <ion-label class="ion-padding-start">{{driver.lastUpdate|ago}}</ion-label>
+                </div>
+            </ion-label>
+            <ion-icon name="arrow-dropright"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
+        </ion-item>
+    </ion-list>
+    
+    <ion-list>
+        <ion-list-header>
+            <h4>Offline</h4>
+        </ion-list-header>
+        <ion-item *ngFor="let driver of 
+        (driverList$
+        |async
+        |dOnline:false
+        |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
+            <ion-avatar class="ion-margin-end">
+                <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
+                </ion-img>
+            </ion-avatar>
+            <ion-label>
+                <h2>{{driver.name}}</h2>
+                <div style="display:flex">
+                    <div style="display:flex" *ngIf="driver.trackDetails">
+                        <ion-icon name="clock"></ion-icon>
+                        <ion-label class="ion-padding-start">RDDP: {{driver.trackDetails.RemainingDailyDrivingPeriod}} -
+                            RTTNRB: {{driver.trackDetails.RemainingTimeTillNextRestBreak}}</ion-label>
                     </div>
                     <div style="display:flex" *ngIf="!driver.trackDetails">
                         no time info
@@ -46,57 +83,3 @@
         </ion-item>
     </ion-list>
 </ion-content>
-
-<!-- <ion-list>
-    <ion-list-header>
-        <h4>Online</h4>
-    </ion-list-header>
-    <ion-item *ngFor="let driver of 
-    (driversService.getDrivers()
-    |async
-    |dOnline:true
-    |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
-        <ion-avatar class="ion-margin-end">
-            <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
-            </ion-img>
-        </ion-avatar>
-        <ion-label>
-            <h2>{{driver.name}}</h2>
-            <div style="display:flex">
-                <ion-icon name="pin"></ion-icon>
-                <ion-label class="ion-padding-start">Paderborn</ion-label>
-                <ion-icon class="ion-padding-start" name="sync"></ion-icon>
-                <ion-label class="ion-padding-start">{{driver.lastUpdate|ago}}</ion-label>
-            </div>
-        </ion-label>
-        <ion-icon name="arrow-dropright"></ion-icon>
-        <ion-ripple-effect></ion-ripple-effect>
-    </ion-item>
-</ion-list>
-
-<ion-list>
-    <ion-list-header>
-        <h4>Offline</h4>
-    </ion-list-header>
-    <ion-item *ngFor="let driver of 
-    (driversService.getDrivers()
-    |async
-    |dOnline:false
-    |sortingDrivers:(filter$|async))" class="ion-activatable" (click)="selectDriver(driver)">
-        <ion-avatar class="ion-margin-end">
-            <ion-img src="https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png">
-            </ion-img>
-        </ion-avatar>
-        <ion-label>
-            <h2>{{driver.name}}</h2>
-            <div style="display:flex">
-                <ion-icon name="pin"></ion-icon>
-                <ion-label class="ion-padding-start">Paderborn</ion-label>
-                <ion-icon class="ion-padding-start" name="sync"></ion-icon>
-                <ion-label class="ion-padding-start">{{driver.lastUpdate|ago}}</ion-label>
-            </div>
-        </ion-label>
-        <ion-icon name="arrow-dropright"></ion-icon>
-        <ion-ripple-effect></ion-ripple-effect>
-    </ion-item>
-</ion-list> -->

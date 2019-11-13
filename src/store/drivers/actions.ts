@@ -21,3 +21,8 @@ export class GetDriverTrackDetailsByIds {
     static readonly type = '[DRIVERS] GET DRIVER TRACK DETAILS';
     constructor(public driverIds: number[]) { }
 }
+
+export class UpdateDriverTrackDetails {
+    static readonly type = '[DRIVERS] UPDATE DRIVER TRACK DETAILS';
+    constructor() { }
+}

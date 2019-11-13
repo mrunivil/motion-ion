@@ -18,7 +18,6 @@ export class DriversTabPage implements OnInit{
 
     @Select(DriversState.filter) filter$: Observable<DriverFilter>;
     @Select(DriversState.driverList) driverList$: Observable<Driver[]>;
-    @Select(DriversState.driverListWithTrackDetails) detailedDriver$: Observable<Driver[]>;
 
     constructor(
         public driversService: DriversService,
