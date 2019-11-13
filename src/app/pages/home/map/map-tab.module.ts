@@ -7,6 +7,7 @@ import { MapTabPage } from './map-tab.page';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { NgxsModule } from '@ngxs/store';
 import { MapState } from 'src/store/map/map.state';
+import { VehiclesState } from 'src/store/vehicles/vehicles.state';
 
 @NgModule({
     imports: [
@@ -14,7 +15,7 @@ import { MapState } from 'src/store/map/map.state';
         CommonModule,
         FormsModule,
         SharedModule,
-        NgxsModule.forFeature([MapState]),
+        NgxsModule.forFeature([MapState,VehiclesState]),
         RouterModule.forChild([{ path: '', component: MapTabPage }])
     ],
     declarations: [MapTabPage]

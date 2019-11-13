@@ -8,6 +8,7 @@ import { DriverFilter } from 'src/app/shared/filters/driver.filter';
 import { ApplyDriversFilters, SelectDriver,GetAllDriver, GetDriverTrackDetailsByIds } from 'src/store/drivers/actions';
 import { DriversState } from 'src/store/drivers/drivers.state';
 import { DriversService } from './../../../services/drivers/drivers.service';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-drivers-tab',
@@ -27,7 +28,7 @@ export class DriversTabPage implements OnInit{
 
     ngOnInit() {
         this.store.dispatch(new GetAllDriver());
-        this.store.dispatch(new GetDriverTrackDetailsByIds([20,22]))
+        this.store.dispatch(new GetDriverTrackDetailsByIds([20,22])); // TODO - fetch only visible Trackdetails/ all details
     }
     selectDriver(selected: Driver) {
         this.store.dispatch(new SelectDriver(selected));
