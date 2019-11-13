@@ -25,3 +25,7 @@ export class GetVehiclePositionsByIds{
     static readonly type = '[VEHICLES] GET VEHICLE POSITIONS';
     constructor (public vehicleIds: number[]) {}
 }
+export class GetAllVehiclePositions{
+    static readonly type = '[VEHICLES] GET ALL VEHICLE POSITIONS';
+    constructor () {}
+}
