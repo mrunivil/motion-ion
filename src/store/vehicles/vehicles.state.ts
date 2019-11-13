@@ -61,7 +61,6 @@ export class VehiclesState {
             })
             const ids = result.map(result => result.id);
             dispatch(new GetVehiclePositionsByIds(ids));
-            debugger
         }
         )
     }
