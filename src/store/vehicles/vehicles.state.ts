@@ -2,7 +2,7 @@ import { Navigate } from '@ngxs/router-plugin';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Vehicle } from 'src/app/model/vehicle';
 import { VehicleFilter } from 'src/app/shared/filters/vehicle.filter';
-import { ApplyVehiclesFilters, SelectVehicle, GetVehicleTrackDetailsByIds, GetVehiclePositionsByIds, GetAllVehicles } from './actions';
+import { ApplyVehiclesFilters, SelectVehicle, GetVehicleTrackDetailsByIds, GetVehiclePositionsByIds, GetAllVehicles, GetAllVehiclePositions } from './actions';
 import { VehicleTrackDetails } from 'src/app/model/vehicleTrackDetails';
 import { VehiclePosition } from 'src/app/model/vehiclePosition';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
@@ -59,8 +59,6 @@ export class VehiclesState {
             patchState({
                 vehicleList: result
             })
-            const ids = result.map(result => result.id);
-            dispatch(new GetVehiclePositionsByIds(ids));
         }
         )
     }
@@ -78,6 +76,17 @@ export class VehiclesState {
             patchState({
                 vehiclePositions: result
             })
+        )
+    }
+    @Action(GetAllVehiclePositions)
+    getAllVehiclePositions({ dispatch, patchState }: StateContext<VehiclesStateModel>) {
+        this.vehicleService.getVehicleObjects().subscribe((result: Vehicle[]) => {
+            patchState({
+                vehicleList: result
+            })
+            const ids = result.map(result => result.id);
+            dispatch(new GetVehiclePositionsByIds(ids));
+        }
         )
     }
 }

@@ -12,8 +12,9 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FakeBackendInterceptor, fakeBackendProvider } from './shared/intercepters/fake-backend-provider.intercepter';
 
 @NgModule({
     declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     providers: [
         StatusBar,
         SplashScreen,
+        fakeBackendProvider,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     ],
     bootstrap: [AppComponent]
