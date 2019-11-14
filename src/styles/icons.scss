@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "cglyphs";
+  src: url("assets/fonts/Cglyphs.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "cglyphs2";
+  src: url("assets/fonts/Cglyphs2.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+i.icon {
+  &::after {
+    font-style: normal;
+  }
+  &.size {
+    &-small {
+      font-size: small;
+    }
+    &-normal {
+      font-size: normal;
+    }
+    &-big {
+      font-size: xx-large;
+    }
+  }
+  &.disabled {
+    opacity: 40%;
+  }
+  &.color {
+    &-dark {
+      color: #4f4f4f;
+    }
+    &-light {
+      color: #f2f2f2;
+    }
+    &-red {
+      color: var(--ion-color-danger);
+    }
+    &-green {
+      color: var(--ion-color-success);
+    }
+    &-primary {
+      color: var(--ion-color-primary);
+    }
+  }
+  &.bed,
+  &.rest {
+    &::after {
+      content: "\0058";
+      font-family: "cglyphs";
+    }
+  }
+  &.wheel,
+  &.driving {
+    &::after {
+      content: "\0055";
+      font-family: "cglyphs";
+    }
+  }
+  &.driver {
+    &::after {
+      content: "\002B";
+      font-family: "cglyphs";
+    }
+  }
+  &.vehicle {
+    &::after {
+      content: "\002C";
+      font-family: "cglyphs";
+    }
+  }
+  &.reload {
+    &::after {
+      content: "\0054";
+      font-family: "cglyphs";
+    }
+  }
+  &.active {
+    &::after {
+      content: "\0056";
+      font-family: "cglyphs";
+    }
+  }
+  &.passive {
+    &::after {
+      content: "\0057";
+      font-family: "cglyphs";
+    }
+  }
+  &.logout {
+    &::after {
+      content: "\0061";
+      font-family: "cglyphs";
+    }
+  }
+  &.distance {
+    &::after {
+      content: "\006E";
+      font-family: "cglyphs";
+    }
+  }
+  &.speed {
+    &::after {
+      content: "\006F";
+      font-family: "cglyphs";
+    }
+  }
+  &.path {
+    &::after {
+      content: "\0073";
+      font-family: "cglyphs";
+    }
+  }
+  &.sort {
+    &::after {
+      content: "\005D";
+      font-family: "cglyphs";
+    }
+  }
+  &.play {
+    &::after {
+      content: "\0060";
+      font-family: "cglyphs";
+    }
+  }
+  &.map {
+    &::after {
+      content: "\0045";
+      font-family: "cglyphs";
+    }
+  }
+  &.location {
+    &::after {
+      content: "\007A";
+      font-family: "cglyphs";
+    }
+  }
+  &.clock {
+    &::after {
+      content: "\0070";
+      font-family: "cglyphs";
+    }
+  }
+
+  // cglyphs2
+  &.motor {
+    &::after {
+      content: "\006B";
+      font-family: "cglyphs2";
+    }
+  }
+  &.parking {
+    &::after {
+      content: "\0070";
+      font-family: "cglyphs2";
+    }
+  }
+  &.stop {
+    &::after {
+      content: "\0072";
+      font-family: "cglyphs2";
+    }
+  }
+}
