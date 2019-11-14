@@ -79,15 +79,19 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
 
     startClustering(map, data) {
         var dataPoints = data.map(function (item) {
-            return new H.clustering.DataPoint(item.Latitude, item.Longitude);
+            var xyz =  new H.clustering.DataPoint(item.Latitude, item.Longitude, 1, item); 
+            return xyz;
         });
         var clusteredDataProvider = new H.clustering.Provider(dataPoints, {
             clusteringOptions: {
-                eps: 32,
+                eps: 64,
                 minWeight: 2
             }
         });
         var clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
         map.addLayer(clusteringLayer);
+        clusteredDataProvider.addEventListener('tap', function(event) {
+            console.log(event.target.getData().a.data.VRN)
+          });
     }
 }
