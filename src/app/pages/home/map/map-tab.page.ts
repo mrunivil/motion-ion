@@ -53,7 +53,7 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
 
                     const coord = { lat: pos[0].Latitude, lng: pos[0].Longitude };
 
-                    let icon = new H.map.Icon('assets/icon/favicon.png');
+                    const icon = new H.map.Icon('assets/icon/favicon.png');
                     this.platform = new H.service.Platform({
                         apikey: 'guQQwicU7quqkL5j1Mn1q917Js7XxEvYH6HJ1-fwRQs'
                     });
@@ -68,9 +68,9 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
                     }
                     );
                     window.addEventListener('resize', () => map.getViewPort().resize());
-                    let mapEvents = new H.mapevents.MapEvents(map);
-                    let behavior = new H.mapevents.Behavior(mapEvents);
-                    let ui = H.ui.UI.createDefault(map, defaultLayers);
+                    const mapEvents = new H.mapevents.MapEvents(map);
+                    const behavior = new H.mapevents.Behavior(mapEvents);
+                    const ui = H.ui.UI.createDefault(map, defaultLayers);
                     this.startClustering(map, pos);
                 }
             }
@@ -79,15 +79,19 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
 
     startClustering(map, data) {
         let dataPoints = data.map(function (item) {
-            return new H.clustering.DataPoint(item.Latitude, item.Longitude);
+            let xyz = new H.clustering.DataPoint(item.Latitude, item.Longitude, 1, item);
+            return xyz;
         });
-        let clusteredDataProvider = new H.clustering.Provider(dataPoints, {
+        const clusteredDataProvider = new H.clustering.Provider(dataPoints, {
             clusteringOptions: {
-                eps: 32,
+                eps: 64,
                 minWeight: 2
             }
         });
-        let clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+        const clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
         map.addLayer(clusteringLayer);
+        clusteredDataProvider.addEventListener('tap', function (event) {
+            console.log(event.target.getData().a.data.VRN);
+        });
     }
 }
