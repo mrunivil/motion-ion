@@ -1,9 +1,9 @@
 export const environment = {
-    env: 'PROD',
+    env: 'QA',
     production: true,
     apikey: 'guQQwicU7quqkL5j1Mn1q917Js7XxEvYH6HJ1-fwRQs'
 };
-const BASE_URL = 'https://www.my-fis.com/motion2/api/';
+const BASE_URL = 'http://localhost:3000/api/';
 
 export const urls = {
     GET_ALL_DRIVER: BASE_URL + 'planner/api/getDrivers',

@@ -38,7 +38,7 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
         this.alive.complete();
     }
 
-    toggleAutorefresh() {
+    toggleAutorefresh(event: CustomEvent) {
         this.store.dispatch(new ToggleAutoRefresh());
     }
 
@@ -53,7 +53,7 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
 
                     const coord = { lat: pos[0].Latitude, lng: pos[0].Longitude };
 
-                    var icon = new H.map.Icon('assets/icon/favicon.png');
+                    let icon = new H.map.Icon('assets/icon/favicon.png');
                     this.platform = new H.service.Platform({
                         apikey: 'guQQwicU7quqkL5j1Mn1q917Js7XxEvYH6HJ1-fwRQs'
                     });
@@ -68,26 +68,26 @@ export class MapTabPage implements AfterViewInit, OnInit, OnDestroy {
                     }
                     );
                     window.addEventListener('resize', () => map.getViewPort().resize());
-                    var mapEvents = new H.mapevents.MapEvents(map);
-                    var behavior = new H.mapevents.Behavior(mapEvents);
-                    var ui = H.ui.UI.createDefault(map, defaultLayers);
+                    let mapEvents = new H.mapevents.MapEvents(map);
+                    let behavior = new H.mapevents.Behavior(mapEvents);
+                    let ui = H.ui.UI.createDefault(map, defaultLayers);
                     this.startClustering(map, pos);
                 }
             }
-        )
+        );
     }
 
     startClustering(map, data) {
-        var dataPoints = data.map(function (item) {
+        let dataPoints = data.map(function (item) {
             return new H.clustering.DataPoint(item.Latitude, item.Longitude);
         });
-        var clusteredDataProvider = new H.clustering.Provider(dataPoints, {
+        let clusteredDataProvider = new H.clustering.Provider(dataPoints, {
             clusteringOptions: {
                 eps: 32,
                 minWeight: 2
             }
         });
-        var clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+        let clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
         map.addLayer(clusteringLayer);
     }
 }
